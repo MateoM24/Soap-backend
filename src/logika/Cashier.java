@@ -1,5 +1,8 @@
 package logika;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
@@ -20,7 +23,7 @@ public class Cashier {
 	public double getCartValue(Cart cart){
 		double sum=0;
 		for(Product p:cart.getList()){
-			sum+=p.getPrice();
+			sum+=p.getPrice()*p.getQuantity();
 		}
 		return sum;
 	}
