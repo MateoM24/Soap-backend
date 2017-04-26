@@ -1,114 +1,62 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://logika/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CashierService" targetNamespace="http://logika/">
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CashierService" targetNamespace="http://logika/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://logika/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://logika/" targetNamespace="http://logika/" version="1.0">
-
-  <xs:element name="discountCart" type="tns:discountCart"/>
-
-  <xs:element name="discountCartResponse" type="tns:discountCartResponse"/>
-
-  <xs:element name="getCartValue" type="tns:getCartValue"/>
-
-  <xs:element name="getCartValueResponse" type="tns:getCartValueResponse"/>
-
-  <xs:element name="getMostExpensiveProduct" type="tns:getMostExpensiveProduct"/>
-
-  <xs:element name="getMostExpensiveProductResponse" type="tns:getMostExpensiveProductResponse"/>
-
-  <xs:complexType name="getCartValue">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:cart"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="cart">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="tns:product"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="product">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string"/>
-      <xs:element name="price" type="xs:double"/>
-      <xs:element name="quantity" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getCartValueResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:double"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="discountCart">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:cart"/>
-      <xs:element name="arg1" type="xs:double"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="discountCartResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:cart"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getMostExpensiveProduct">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:cart"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getMostExpensiveProductResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:product"/>
-    </xs:sequence>
-  </xs:complexType>
-
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://logika/" schemaLocation="CashierService_schema1.xsd"></import>
+</schema>
   </wsdl:types>
   <wsdl:message name="discountCart">
-    <wsdl:part element="tns:discountCart" name="parameters">
+    <wsdl:part name="parameters" element="tns:discountCart">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getMostExpensiveProductResponse">
-    <wsdl:part element="tns:getMostExpensiveProductResponse" name="parameters">
+    <wsdl:part name="parameters" element="tns:getMostExpensiveProductResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getMostExpensiveProduct">
-    <wsdl:part element="tns:getMostExpensiveProduct" name="parameters">
+    <wsdl:part name="parameters" element="tns:getMostExpensiveProduct">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getCartValueResponse">
-    <wsdl:part element="tns:getCartValueResponse" name="parameters">
+    <wsdl:part name="parameters" element="tns:getCartValueResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getCartValue">
-    <wsdl:part element="tns:getCartValue" name="parameters">
+    <wsdl:part name="parameters" element="tns:getCartValue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NoCartException">
+    <wsdl:part name="NoCartException" element="tns:NoCartException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="discountCartResponse">
-    <wsdl:part element="tns:discountCartResponse" name="parameters">
+    <wsdl:part name="parameters" element="tns:discountCartResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="Cashier">
     <wsdl:operation name="getCartValue">
-      <wsdl:input message="tns:getCartValue" name="getCartValue">
+      <wsdl:input name="getCartValue" message="tns:getCartValue">
     </wsdl:input>
-      <wsdl:output message="tns:getCartValueResponse" name="getCartValueResponse">
+      <wsdl:output name="getCartValueResponse" message="tns:getCartValueResponse">
     </wsdl:output>
+      <wsdl:fault name="NoCartException" message="tns:NoCartException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="discountCart">
-      <wsdl:input message="tns:discountCart" name="discountCart">
+      <wsdl:input name="discountCart" message="tns:discountCart">
     </wsdl:input>
-      <wsdl:output message="tns:discountCartResponse" name="discountCartResponse">
+      <wsdl:output name="discountCartResponse" message="tns:discountCartResponse">
     </wsdl:output>
+      <wsdl:fault name="NoCartException" message="tns:NoCartException">
+    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getMostExpensiveProduct">
-      <wsdl:input message="tns:getMostExpensiveProduct" name="getMostExpensiveProduct">
+      <wsdl:input name="getMostExpensiveProduct" message="tns:getMostExpensiveProduct">
     </wsdl:input>
-      <wsdl:output message="tns:getMostExpensiveProductResponse" name="getMostExpensiveProductResponse">
+      <wsdl:output name="getMostExpensiveProductResponse" message="tns:getMostExpensiveProductResponse">
     </wsdl:output>
+      <wsdl:fault name="NoCartException" message="tns:NoCartException">
+    </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CashierServiceSoapBinding" type="tns:Cashier">
@@ -121,6 +69,9 @@
       <wsdl:output name="getCartValueResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="NoCartException">
+        <soap:fault name="NoCartException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="discountCart">
       <soap:operation soapAction="" style="document"/>
@@ -130,6 +81,9 @@
       <wsdl:output name="discountCartResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="NoCartException">
+        <soap:fault name="NoCartException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getMostExpensiveProduct">
       <soap:operation soapAction="" style="document"/>
@@ -139,10 +93,13 @@
       <wsdl:output name="getMostExpensiveProductResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="NoCartException">
+        <soap:fault name="NoCartException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CashierService">
-    <wsdl:port binding="tns:CashierServiceSoapBinding" name="CashierPort">
+    <wsdl:port name="CashierPort" binding="tns:CashierServiceSoapBinding">
       <soap:address location="http://localhost:8080/SRI4/Cashier"/>
     </wsdl:port>
   </wsdl:service>

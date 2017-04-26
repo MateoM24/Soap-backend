@@ -1,0 +1,57 @@
+<xs:schema xmlns:tns="http://logika/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://logika/">
+  <xs:element name="discountCart" type="tns:discountCart"></xs:element>
+  <xs:element name="discountCartResponse" type="tns:discountCartResponse"></xs:element>
+  <xs:element name="getCartValue" type="tns:getCartValue"></xs:element>
+  <xs:element name="getCartValueResponse" type="tns:getCartValueResponse"></xs:element>
+  <xs:element name="getMostExpensiveProduct" type="tns:getMostExpensiveProduct"></xs:element>
+  <xs:element name="getMostExpensiveProductResponse" type="tns:getMostExpensiveProductResponse"></xs:element>
+  <xs:complexType name="getCartValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:cart"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cart">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="tns:product"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"></xs:element>
+      <xs:element name="price" type="xs:double"></xs:element>
+      <xs:element name="quantity" type="xs:int"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCartValueResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="discountCart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:cart"></xs:element>
+      <xs:element name="arg1" type="xs:double"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="discountCartResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cart"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMostExpensiveProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:cart"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMostExpensiveProductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoCartException" type="tns:NoCartException"></xs:element>
+  <xs:complexType name="NoCartException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

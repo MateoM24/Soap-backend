@@ -1,17 +1,9 @@
 package logika;
 
 import java.util.ArrayList;
-//import javax.xml.bind.annotation.XmlAccessorType;
-//import javax.xml.bind.annotation.XmlElement;
-//import javax.xml.bind.annotation.XmlType;
-//import javax.xml.bind.annotation.XmlAccessType;
 
-
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "Card")
 public class Cart{
 	
-	//@XmlElement(name = "firstName")
 	private ArrayList<Product> list;
 	
 	public Cart() {

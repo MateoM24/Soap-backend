@@ -1,21 +1,14 @@
 package logika;
 
-//import javax.xml.bind.annotation.XmlAccessorType;
-//import javax.xml.bind.annotation.XmlElement;
-//import javax.xml.bind.annotation.XmlType;
-//import javax.xml.bind.annotation.XmlAccessType;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "Card")
 public class Product {
 	
-	//@XmlElement(name = "name")
 	private String name;
 	
-	//@XmlElement(name = "price")
 	private double price;
 	
-	//@XmlElement(name = "price")
 	private int quantity;
 	
 	public Product(){}
@@ -53,7 +46,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
+		return "Product [name=" + name + ", price=" + (new DecimalFormat("#,##0.00").format(new BigDecimal(price))) + ", quantity=" + quantity + "]";
 	}
 	
 	@Override

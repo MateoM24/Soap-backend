@@ -3,7 +3,6 @@ package logika.jaxws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -13,21 +12,20 @@ import javax.xml.bind.annotation.XmlType;
  * Generated source version: 3.1.4.redhat-1
  */
 
-@XmlRootElement(name = "getCartValue", namespace = "http://logika/")
+@XmlRootElement(name = "NoCartException", namespace = "http://logika/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getCartValue", namespace = "http://logika/")
+@XmlType(name = "NoCartException", namespace = "http://logika/")
 
-public class GetCartValue {
+public class NoCartExceptionBean {
 
-    @XmlElement(name = "arg0")
-    private logika.Cart arg0;
+    private java.lang.String message;
 
-    public logika.Cart getArg0() {
-        return this.arg0;
+    public java.lang.String getMessage() {
+        return this.message;
     }
 
-    public void setArg0(logika.Cart newArg0)  {
-        this.arg0 = newArg0;
+    public void setMessage(java.lang.String newMessage)  {
+        this.message = newMessage;
     }
 
 }
